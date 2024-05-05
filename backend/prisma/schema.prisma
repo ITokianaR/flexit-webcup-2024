@@ -1,0 +1,117 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "mysql"
+  url      = env("DATABASE_URL")
+}
+
+enum UserType {
+  ADMIN
+  ZOMBIE
+}
+
+enum Category {
+  LANGUAGE
+  MATHS
+  MORAL
+  ART
+}
+
+model User {
+  id         Int          @id @default(autoincrement())
+  profile    String?
+  email      String       @unique
+  username   String       @unique
+  password   String
+  type       UserType     @default(ZOMBIE)
+  level      Int          @default(1)
+  score      Int          @default(0)
+  deathDate  DateTime
+  createdAt  DateTime     @default(now())
+  updatedAt  DateTime     @updatedAt
+  UserCourse UserCourse[]
+  UserQuizz  UserQuizz[]
+}
+
+model Course {
+  id          Int          @id @default(autoincrement())
+  category    Category
+  title       String
+  description String
+  content     String?
+  level       Int
+  urlVideo    String
+  createdAt   DateTime     @default(now())
+  updatedAt   DateTime     @updatedAt
+  UserCourse  UserCourse[]
+  image       String
+  file        File[]
+}
+
+model UserCourse {
+  user     User    @relation(fields: [userId], references: [id])
+  userId   Int
+  course   Course  @relation(fields: [courseId], references: [id])
+  courseId Int
+  locked   Boolean
+  join     Boolean
+  finished Boolean
+
+  @@id([userId, courseId])
+}
+
+model Quizz {
+  id          Int         @id @default(autoincrement())
+  title       String
+  description String
+  level       Int
+  scoreMax    Int
+  createdAt   DateTime    @default(now())
+  updatedAt   DateTime    @updatedAt
+  questions   Question[]
+  UserQuizz   UserQuizz[]
+}
+
+model UserQuizz {
+  user    User  @relation(fields: [userId], references: [id])
+  userId  Int
+  quizz   Quizz @relation(fields: [quizzId], references: [id])
+  quizzId Int
+  score   Int
+
+  @@id([userId, quizzId])
+}
+
+model Question {
+  id        Int      @id @default(autoincrement())
+  question  String
+  choices   Choice[]
+  value     String
+  score     Int
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+  Quizz     Quizz    @relation(fields: [quizzId], references: [id])
+  quizzId   Int
+}
+
+model Choice {
+  id         Int       @id @default(autoincrement())
+  value      String
+  Question   Question? @relation(fields: [questionId], references: [id])
+  questionId Int?
+  createdAt  DateTime  @default(now())
+  updatedAt  DateTime  @updatedAt
+}
+
+model File {
+  id        Int      @id @default(autoincrement())
+  filename  String
+  mimeType  String
+  url       String
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+  Course    Course?  @relation(fields: [courseId], references: [id])
+  courseId  Int?
+}

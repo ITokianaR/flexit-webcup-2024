@@ -1,0 +1,114 @@
+#Container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-end;
+    height: 100vh;
+    width: 100vw;
+  }
+  
+  #rays {
+    z-index: 2;
+    position: relative;
+    bottom: -1.5em;
+    animation: rays 2s ease-in-out infinite;
+  }
+  
+  .form {
+    position: relative;
+    top: 5em;
+    padding: 4%;
+    z-index: 3;
+    display: flex;
+    flex-direction: column;
+    border-radius: 0.5rem;
+    border: 4px solid #fff;
+    background: rgba(0, 29, 29, 0.52);
+    box-shadow: 0px 0px 4px 0px #7FC7D9 inset, 0px 0px 8px #7FC7D9;
+    backdrop-filter: blur(3.5px);
+    gap: 1em;
+    animation: float 2s ease-in-out infinite;
+    align-items: center;
+  }
+  
+  #login-lable {
+    text-align: center;
+    color: white;
+    font-size: 2rem;
+    font-weight: 600;
+    letter-spacing: 8px;
+    text-shadow: 0px 0px 16px rgb(243, 243, 243);
+  }
+  
+  .form-content {
+    height: 3em;
+    padding: 1px 8px;
+    color: white;
+    text-decoration: none;
+    letter-spacing: 1px;
+    font-weight: bold;
+    border-radius: 6px;
+    background: transparent;
+    border: solid 1px #DCF2F1;
+    text-shadow: 0px 1px 4px rgb(243, 243, 243);
+  }
+  
+  .form-content:focus-visible {
+    outline: none;
+    text-decoration: none;
+    background: #365486;
+    box-shadow: 0px 0px 1px 4px #9ee5e3;
+  }
+  
+  .form-content:hover {
+    background: #365486;
+  }
+  
+  ::placeholder {
+    font-weight: 300;
+    color: white;
+    letter-spacing: 0.1rem;
+    text-shadow: 0px 1px 5px rgb(66, 66, 66);
+  }
+  
+  .form button {
+    cursor: pointer;
+    color: white;
+    border-radius: 10px;
+  }
+  
+  .form button:hover {
+    position: relative;
+    bottom: 4px;
+    background: #365486;
+    box-shadow: 0px 0px 2px 2px #ffffff;
+  }
+  
+  @keyframes float {
+    0% {
+      position: relative;
+    }
+  
+    50% {
+      top: 50px;
+    }
+  
+    100% {
+      position: relative;
+    }
+  }
+  
+  @keyframes rays {
+    0% {
+      opacity: 0.6;
+    }
+  
+    50% {
+      opacity: 1;
+    }
+  
+    100% {
+      opacity: 0.6;
+    }
+  }
+  

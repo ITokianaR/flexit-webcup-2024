@@ -1,0 +1,114 @@
+.formContact-container {
+  width: 400px;
+  background: linear-gradient(145deg, transparent 5%,#0f1035, #0f1035) padding-box,
+    linear-gradient(145deg, transparent 35%, #dcf2f1, #7fc7d9) border-box;
+  border: 2px solid transparent;
+  padding: 32px 24px;
+  font-size: 14px;
+  font-family: inherit;
+  color: white;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  box-sizing: border-box;
+  border-radius: 16px;
+  background-size: 200% 100%;
+  animation: gradient 5s ease infinite;
+}
+
+@keyframes gradient {
+  0% {
+    background-position: 0% 50%;
+  }
+
+  50% {
+    background-position: 100% 50%;
+  }
+
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+.formContact-container button:active {
+  scale: 0.95;
+}
+
+.formContact-container .formContact {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.formContact-container .formContact-group {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.formContact-container .formContact-group label {
+  display: block;
+  margin-bottom: 5px;
+  color: #dcf2f1;
+  font-weight: 600;
+  font-size: 12px;
+}
+
+.formContact-container .formContact-group input {
+  width: 100%;
+  padding: 12px 16px;
+  border-radius: 8px;
+  color: #fff;
+  font-family: inherit;
+  background-color: transparent;
+  border: 1px solid #365486;
+}
+
+.formContact-container .formContact-group textarea {
+  width: 100%;
+  padding: 12px 16px;
+  border-radius: 8px;
+  resize: none;
+  color: #fff;
+  height: 96px;
+  border: 1px solid #365486;
+  background-color: transparent;
+  font-family: inherit;
+}
+
+.formContact-container .formContact-group input::placeholder {
+  opacity: 0.5;
+}
+
+.formContact-container .formContact-group input:focus {
+  outline: none;
+  border-color: #7FC7D9;
+}
+
+.formContact-container .formContact-group textarea:focus {
+  outline: none;
+  border-color: #7FC7D9;
+}
+
+.formContact-container .formContact-submit-btn {
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    align-self: flex-start;
+    color: #DCF2F1;
+    font-weight: 600;
+    width: 40%;
+    background: #DB570D;
+    padding: 12px 16px;
+    font-size: inherit;
+    gap: 8px;
+    margin-top: 8px;
+    cursor: pointer;
+    border-radius: 6px;
+  }
+  
+  .formContact-container .formContact-submit-btn:hover {
+    background-color: #DCF2F1;
+    color: #365486;
+  }
+  
